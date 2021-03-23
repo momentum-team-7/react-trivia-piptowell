@@ -2,6 +2,7 @@
 import { useState, useEffect } from 'react'
 import axios from 'axios'
 import CategoryList from './components/CategoryList'
+import CategoryQuestions from './components/CategoryQuestions'
 import 'tachyons'
 
 function App() {
@@ -21,9 +22,14 @@ function App() {
   return (
     <div className='wrapper'>
       <h1>Trivia!</h1>
+      {selectedCategory ? (
+        <CategoryQuestions category={selectedCategory} 
+        handleGoBack={() => setSelectedCategory(null)}/>
+      ) : (
       <CategoryList categories={categories} 
       setSelectedCategory={setSelectedCategory}
       />
+      )}
     </div>
   )
 }
