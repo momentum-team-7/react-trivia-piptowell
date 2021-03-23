@@ -7,8 +7,8 @@ function App() {
   
   useEffect(() => {
     console.log('useEffect runs', categories)
-    axios.get('https://opentdb.com/api_category.php').then((response) => {
-    setCategories(response.data)
+    axios.get('https://opentdb.com/api.php?amount=10').then((response) => {
+    setCategories(response.data.results)
     })
   }, [])
 
@@ -18,8 +18,8 @@ function App() {
     <div className='wrapper'>
       <h1>Trivia, ya dangus</h1>
       <ul>
-        {categories.map((category) => (
-          <li key={category.id}>{category.name}</li>
+        {categories.map((category, idx) => (
+          <li key={idx}>{category.question}</li>
         ))}
       </ul>
     </div>
