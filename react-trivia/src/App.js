@@ -1,9 +1,12 @@
 // import './App.css';
 import { useState, useEffect } from 'react'
 import axios from 'axios'
+import CategoryList from './components/CategoryList'
+import 'tachyons'
 
 function App() {
   const [categories, setCategories] = useState([])
+  const [selectedCategory, setSelectedCategory] = useState(null)
   
   useEffect(() => {
     console.log('useEffect runs', categories)
@@ -17,12 +20,10 @@ function App() {
 
   return (
     <div className='wrapper'>
-      <h1>Trivia, ya</h1>
-      <ul>
-        {categories.map((category, idx) => (
-          <li key={idx}>{category.name}</li>
-        ))}
-      </ul>
+      <h1>Trivia!</h1>
+      <CategoryList categories={categories} 
+      setSelectedCategory={setSelectedCategory}
+      />
     </div>
   )
 }
