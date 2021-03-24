@@ -14,6 +14,7 @@ export default function CategoryQuestions({ category, handleGoBack }) {
                     type: dataByCategory.type,
                     difficulty: dataByCategory.difficulty,
                     incorrect_answers: dataByCategory.incorrect_answers,
+                    correct_answer: dataByCategory.correct_answer,
                     question: dataByCategory.question,
                     id: dataByCategory.id
                 }))
@@ -31,7 +32,15 @@ export default function CategoryQuestions({ category, handleGoBack }) {
             </button>
             <ul>
                 {categoryQuestions.map((dataByCategory) => (
-                <li key={dataByCategory.id}>{dataByCategory.question}</li>
+                <li key={dataByCategory.id}>{dataByCategory.question}
+                    <dl>
+                        <dt>Choose your answer</dt>
+                        <dd>{dataByCategory.correct_answer}</dd>
+                        <dd>{dataByCategory.incorrect_answers.[0]}</dd> 
+                        <dd>{dataByCategory.incorrect_answers.[1]}</dd>    
+                        <dd>{dataByCategory.incorrect_answers.[2]}</dd>       
+                    </dl>
+                </li>
                 ))}
             </ul>
         </div>
