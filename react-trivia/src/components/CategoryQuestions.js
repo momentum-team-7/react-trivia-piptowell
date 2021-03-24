@@ -16,7 +16,6 @@ export default function CategoryQuestions({ category, handleGoBack }) {
                     incorrect_answers: dataByCategory.incorrect_answers,
                     correct_answer: dataByCategory.correct_answer,
                     question: dataByCategory.question,
-                    id: dataByCategory.id
                 }))
             setCategoryQuestions(data)
             })
@@ -31,8 +30,8 @@ export default function CategoryQuestions({ category, handleGoBack }) {
             Back to other categories
             </button>
             <ul>
-                {categoryQuestions.map((dataByCategory) => (
-                <li key={dataByCategory.id}>{dataByCategory.question}
+                {categoryQuestions.map((dataByCategory, idx) => (
+                <li key={idx}>{dataByCategory.question}
                     <dl>
                         <dt>Choose your answer</dt>
                         <dd>{dataByCategory.correct_answer}</dd>
