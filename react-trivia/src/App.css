@@ -1,3 +1,14 @@
+.greenCorrect {
+  background-color: #00ff0080;
+}
+
+.redIncorrect {
+  background-color: #ff000080;
+}
+
+.hasntChosen {
+  background-color: #FFFFFF	
+}
 /* .App {
   text-align: center;
 }

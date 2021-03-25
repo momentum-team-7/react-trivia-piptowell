@@ -1,8 +1,12 @@
 import React, { useState, useEffect } from 'react'
 import axios from 'axios'
+import '../App.css'
+
 
 export default function CategoryQuestions({ category, handleGoBack }) {
     const [categoryQuestions, setCategoryQuestions] = useState([])
+    const [correct, setCorrect] = useState(null)
+    // const answer === correct ? 'green' : answer === incorrect ? 'red' : 'white' 
 
     useEffect(() => {
         axios
@@ -30,16 +34,27 @@ export default function CategoryQuestions({ category, handleGoBack }) {
             Back to other categories
             </button>
             <ul>
+            {/* // const answer === correct ? 'green' : answer === incorrect ? 'red' : 'white'  */}
+
                 {categoryQuestions.map((dataByCategory, idx) => (
+                <div className={correct ? 'greenCorrect' : 'hasntChosen' }>    
                 <li key={idx}>{dataByCategory.question}
                     <dl>
                         <dt>Choose your answer</dt>
-                        <dd>{dataByCategory.correct_answer}</dd>
-                        <dd>{dataByCategory.incorrect_answers.[0]}</dd> 
-                        <dd>{dataByCategory.incorrect_answers.[1]}</dd>    
-                        <dd>{dataByCategory.incorrect_answers.[2]}</dd>       
+
+                        <dd><button onClick={() => setCorrect(true)}>
+                            {dataByCategory.correct_answer}</button></dd>
+
+                        <dd><button onClick={() => setCorrect(false)}>{dataByCategory.incorrect_answers.[0]}</button></dd>
+                        
+                        <dd><button onClick={() => setCorrect(false)}>{dataByCategory.incorrect_answers.[1]}</button></dd>
+
+                        <dd><button onClick={() => setCorrect(false)}>
+                            {dataByCategory.incorrect_answers.[2]}</button></dd>
+                        
                     </dl>
                 </li>
+                </div>
                 ))}
             </ul>
         </div>
