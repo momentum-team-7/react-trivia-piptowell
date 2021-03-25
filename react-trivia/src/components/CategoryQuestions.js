@@ -1,6 +1,10 @@
 import React, { useState, useEffect } from 'react'
 import axios from 'axios'
+<<<<<<< HEAD
 import '../App.css'
+=======
+import Question from './Question'
+>>>>>>> temp
 
 
 export default function CategoryQuestions({ category, handleGoBack }) {
@@ -37,6 +41,7 @@ export default function CategoryQuestions({ category, handleGoBack }) {
             {/* // const answer === correct ? 'green' : answer === incorrect ? 'red' : 'white'  */}
 
                 {categoryQuestions.map((dataByCategory, idx) => (
+<<<<<<< HEAD
                 <div className={correct ? 'greenCorrect' : 'hasntChosen' }>    
                 <li key={idx}>{dataByCategory.question}
                     <dl>
@@ -55,6 +60,13 @@ export default function CategoryQuestions({ category, handleGoBack }) {
                     </dl>
                 </li>
                 </div>
+=======
+                <Question
+                    question={dataByCategory.question} 
+                    incorrect_answers={dataByCategory.incorrect_answers} 
+                    correct_answer={dataByCategory.correct_answer}
+                />    
+>>>>>>> temp
                 ))}
             </ul>
         </div>
