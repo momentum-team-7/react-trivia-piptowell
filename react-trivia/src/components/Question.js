@@ -4,7 +4,7 @@ import Answer from './Answer'
 
 
 export default function Question( { question, incorrect_answers, correct_answer } ) {
-    
+
 
     return (
         <div>
@@ -17,7 +17,7 @@ export default function Question( { question, incorrect_answers, correct_answer 
                     />
                     </dl>
                 </li>
-                ))}
+                
         </div>
     )
 }
