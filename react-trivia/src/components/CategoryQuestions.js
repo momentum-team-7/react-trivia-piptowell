@@ -4,9 +4,10 @@ import Question from './Question'
 
 export default function CategoryQuestions({ category, handleGoBack }) {
     const [categoryQuestions, setCategoryQuestions] = useState([])
+    
     useEffect(() => {
     axios
-        .get(`https://opentdb.com/api.php?amount=10${category.id}&type=multiple`)
+        .get(`https://opentdb.com/api.php?amount=10&category=${category.id}&type=multiple`)
         .then((response) => {
         console.log(response.data.results)
         const data = response.data.results.map((dataByCategory) => ({

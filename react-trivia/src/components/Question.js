@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import he from 'he'
 import Answer from './Answer'
 import '../App.css'
-
+import lodash from 'lodash'
 
 export default function Question( { question, incorrect_answers, correct_answer } ) {
     const [correct, setCorrect] = useState(null)
