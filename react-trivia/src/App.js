@@ -23,7 +23,8 @@ function App() {
     <div className='wrapper'>
       <h1>Trivia!</h1>
       {selectedCategory ? (
-        <CategoryQuestions category={selectedCategory} 
+        <CategoryQuestions 
+        category={selectedCategory} 
         handleGoBack={() => setSelectedCategory(null)}/>
       ) : (
       <CategoryList categories={categories} 

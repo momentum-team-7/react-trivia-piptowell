@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react'
 import axios from 'axios'
 import Question from './Question'
 
-export default function CategoryQuestions({ category, handleGoBack }) {
+export default function CategoryQuestionsAlpha({ category, handleGoBack }) {
     const [categoryQuestions, setCategoryQuestions] = useState([])
     const [currentQuestion, setCurrentQuestion] = useState(0)
 
@@ -24,11 +24,6 @@ export default function CategoryQuestions({ category, handleGoBack }) {
         })
     }, [category])
 
-const handleAnswerButtonClick = (answerOption) => {
-        const nextQuestion = currentQuestion + 1;
-        setCurrentQuestion(nextQuestion)
-    }
-
     return (
     <div>
         <h3>{category.name} Trivia</h3>
@@ -37,19 +32,16 @@ const handleAnswerButtonClick = (answerOption) => {
         onClick={handleGoBack}>
         Back to all categories
         </button>
-
-        <div className='question-text'>Question: 
+        <ul>
+        {categoryQuestions.map((dataByCategory, index) =>
             <Question
-            categoryQuestions={categoryQuestions}
-            currentQuestion={currentQuestion}
-            setCurrentQuestion={setCurrentQuestion}
-            handleAnswerButtonClick={handleAnswerButtonClick}
+            key={index}
+            question={dataByCategory.question}
+            incorrect_answers={dataByCategory.incorrect_answers}
+            correct_answer={dataByCategory.correct_answer}
             />
-        </div>
-        
-
-
-
-    </div>    
+        )}
+        </ul>
+    </div>
     )
 }
