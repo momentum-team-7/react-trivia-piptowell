@@ -3,8 +3,10 @@ import axios from 'axios'
 import Question from './Question'
 
 export default function CategoryQuestions({ category, handleGoBack }) {
-    const [categoryQuestions, setCategoryQuestions] = useState([])
-    const [currentQuestion, setCurrentQuestion] = useState(0)
+    const [categoryQuestions, setCategoryQuestions] = useState([]);
+    const [currentQuestion, setCurrentQuestion] = useState(0);
+    const [showScore, setShowScore] = useState(false);
+    // const [score, setScore] = useState(0);
 
     useEffect(() => {
     axios
@@ -24,10 +26,14 @@ export default function CategoryQuestions({ category, handleGoBack }) {
         })
     }, [category])
 
-const handleAnswerButtonClick = (answerOption) => {
-        const nextQuestion = currentQuestion + 1;
-        setCurrentQuestion(nextQuestion)
+const handleAnswerButtonClick = (answerOption) => {  
+    const nextQuestion = currentQuestion + 1;
+        if (nextQuestion < categoryQuestions.length) {
+        setCurrentQuestion(nextQuestion) 
+    } else {
+        alert('You answered all of the questions!')
     }
+}
 
     return (
     <div>
@@ -38,6 +44,8 @@ const handleAnswerButtonClick = (answerOption) => {
         Back to all categories
         </button>
 
+        {categoryQuestions.length > currentQuestion ? (
+
         <div className='question-text'>Question: 
             <Question
             categoryQuestions={categoryQuestions}
@@ -46,9 +54,10 @@ const handleAnswerButtonClick = (answerOption) => {
             handleAnswerButtonClick={handleAnswerButtonClick}
             />
         </div>
-        
 
-
+        ) : (
+                <h1>Still loading...</h1>
+            )}
 
     </div>    
     )

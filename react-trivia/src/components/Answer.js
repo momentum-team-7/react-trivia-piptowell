@@ -3,22 +3,28 @@ import he from 'he'
 // import lodash from 'lodash'
 
 export default function Answer ( { categoryQuestions, setCorrect, currentQuestion, setCurrentQuestion, handleAnswerButtonClick } ) {
-// need a map here that adds all answers to the same array
-// lets call the array answerOptions and the .map item answerOption(s)
-// shuffles the answers
-// adds them to buttons
-// with appropriate text and stuff
-// also adds the handleAnswerButtonClick to them
+// verifies which is correct_answer
+const _ = require('lodash');
+console.log('Answer.js log for CQ', categoryQuestions)
+let incorrect_answers = categoryQuestions[currentQuestion].incorrect_answers;
+let correct_answer = categoryQuestions[currentQuestion].correct_answer;
+console.log('correct answer is ', correct_answer)
+let answers = [
+    ...incorrect_answers, 
+    correct_answer,
+];
+const shuffledAnswers = _.shuffle(answers)
+console.log(shuffledAnswers)
+
 
 
 
 return (
-    <div>
-        <p>Answer Choices:</p>
-        {/* <button>{categoryQuestions[currentQuestion].correct_answer}</button>
-        <button>{categoryQuestions[currentQuestion].incorrect_answers[0]}</button>
-        <button>{categoryQuestions[currentQuestion].incorrect_answers[1]}</button>
-        <button>{categoryQuestions[currentQuestion].incorrect_answers[2]}</button> */}
+    <div className='answer-section'>
+        {shuffledAnswers.map((answerOption, index) =>
+        (
+            <button key={index} onClick = {() => handleAnswerButtonClick()}>{answerOption}</button> 
+        ))}
     </div>
     )
 }
@@ -52,3 +58,9 @@ return (
 //         </div>
 //     )
 // }
+
+// hard-coded buttons from pre-map answer.js BETA
+{/* <button onClick = {() => handleAnswerButtonClick()}>{categoryQuestions[currentQuestion].correct_answer}</button>
+        <button onClick = {() => handleAnswerButtonClick()}>{categoryQuestions[currentQuestion].incorrect_answers[0]}</button>
+        <button onClick = {() => handleAnswerButtonClick()}>{categoryQuestions[currentQuestion].incorrect_answers[1]}</button>
+        <button onClick = {() => handleAnswerButtonClick()}>{categoryQuestions[currentQuestion].incorrect_answers[2]}</button>  */}
