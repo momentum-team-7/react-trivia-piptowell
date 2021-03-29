@@ -2,7 +2,7 @@ import React from 'react'
 import he from 'he'
 // import lodash from 'lodash'
 
-export default function Answer ( { categoryQuestions, setCorrect, currentQuestion, setCurrentQuestion, handleAnswerButtonClick } ) {
+export default function Answer ( { categoryQuestions, setCorrect, currentQuestion, setCurrentQuestion, handleAnswerButtonClick, score, setScore } ) {
 // verifies which is correct_answer
 const _ = require('lodash');
 console.log('Answer.js log for CQ', categoryQuestions)
@@ -20,10 +20,10 @@ console.log(shuffledAnswers)
 
 
 return (
-    <div className='answer-section'>
+    <div className={'answers'}>
         {shuffledAnswers.map((answerOption, index) =>
         (
-            <button key={index} onClick = {() => handleAnswerButtonClick()}>{answerOption}</button> 
+            <button key={index} onClick = {() => handleAnswerButtonClick()}>{he.decode(answerOption)}</button> 
         ))}
     </div>
     )

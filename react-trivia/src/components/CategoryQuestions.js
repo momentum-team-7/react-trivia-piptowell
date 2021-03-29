@@ -6,7 +6,8 @@ export default function CategoryQuestions({ category, handleGoBack }) {
     const [categoryQuestions, setCategoryQuestions] = useState([]);
     const [currentQuestion, setCurrentQuestion] = useState(0);
     const [showScore, setShowScore] = useState(false);
-    // const [score, setScore] = useState(0);
+    const [score, setScore] = useState(0);
+    const [correct, setCorrect] = useState(null);
 
     useEffect(() => {
     axios
@@ -31,7 +32,7 @@ const handleAnswerButtonClick = (answerOption) => {
         if (nextQuestion < categoryQuestions.length) {
         setCurrentQuestion(nextQuestion) 
     } else {
-        alert('You answered all of the questions!')
+        alert('You answered all the questions!')
     }
 }
 
@@ -52,6 +53,8 @@ const handleAnswerButtonClick = (answerOption) => {
             currentQuestion={currentQuestion}
             setCurrentQuestion={setCurrentQuestion}
             handleAnswerButtonClick={handleAnswerButtonClick}
+            score={score}
+            setScore={setScore}
             />
         </div>
 

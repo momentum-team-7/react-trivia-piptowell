@@ -4,14 +4,14 @@ import Answer from './Answer'
 import '../App.css'
 import lodash from 'lodash'
 
-export default function Question( { categoryQuestions, currentQuestion, setCurrentQuestion, handleAnswerButtonClick } ) {
+export default function Question( { categoryQuestions, currentQuestion, setCurrentQuestion, handleAnswerButtonClick, score, setScore } ) {
     const [correct, setCorrect] = useState(null)
     // const [incorrect, setIncorrect] = useState(null)
 
 
     return (
         <div>
-                <p>{categoryQuestions[currentQuestion].question}</p>                
+                <p>{he.decode(categoryQuestions[currentQuestion].question)}</p>                
                 <div>Choose your answer
                     <Answer
                         categoryQuestions={categoryQuestions}
@@ -19,6 +19,8 @@ export default function Question( { categoryQuestions, currentQuestion, setCurre
                         currentQuestion={currentQuestion}
                         setCurrentQuestion={setCurrentQuestion}
                         handleAnswerButtonClick={handleAnswerButtonClick}
+                        score={score}
+                        setScore={setScore}
                     />
                 </div>        
                 
